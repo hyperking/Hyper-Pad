@@ -1,0 +1,9 @@
+<h1>My Account</h1>
+<p>User name: {{user.username}}</p>
+<p>User Role: <strong>{{user.role.member}}</strong></p>
+<p>User Membership {% if user.role.member == 0 %}You are not a member{%else%}You are a member{%endif%}</p>
+<p>user bio: {{user.bio}}</p>
+<hr/>
+<a href="logout">Log Out</a>
+<a href="updateprofile"> | Update Profile</a>
+

@@ -1,0 +1,292 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} | {{ article.title|striptags }}{% endblock %}
+{% block seolink %}{{SITEURL}}/{{article.url}}{% endblock %}
+{% block seourl %}{{SITEURL}}/{{article.url}}{% endblock %}
+{% block seotitle %}{{article.title}}{% endblock %}
+{% block pageclass %}{{ article.slug }}{% endblock %}
+{% block meta_description %}{{SITEDESCRIPTION}}-{{ article.content|striptags|truncate(200) }}{% endblock %}
+{% block ogdescription %}{{SITEDESCRIPTION}}-{{ article.content|striptags|truncate(200) }}{% endblock %}
+{% block ogimage %}{% if article.featuredimage %}{{article.featuredimage}}{%else%}{{SITETHUMBNAIL}}{% endif %}{% endblock %}
+{% block meta_keywords %}
+{% if article.tags %}
+{{ article.tags|join(',')}}
+{% else %}{{ KEYWORDS_DEFAULT }}{% endif %}
+{% endblock %}
+
+{% block bodyclass %}
+<body class="pushmenu article {% if article.slug %}{{ article.slug }}{% else %}null{% endif %}">
+{% endblock %}
+{% block pagetitle %}
+{{ macros.pptitle( 'Gullah Celebration' ) }}
+{% endblock %}
+{% block content %}
+<div id="content" class="push-left clearfix">
+{# <div class="content-emblem col3">
+<div class="advertisement-square">
+{{ macros.sidebar_ads('2') }}    
+</div>
+
+</div> #}
+
+<div class="content-data col col8 roundcorners shadow">
+
+
+    {% if EDIT_THIS %}
+    {{ macros.edit( article.id ) }}
+    {% endif %}
+
+{# 
+/******************************************
+  NEXT ARTICLE NAVIGATION
+*****/ #}
+<div class="next-article-links clearfix">
+    {% if article.prev_article_in_category %}
+        <a href="{{ SITEURL }}/{{ article.prev_article_in_category.url}}">
+        <span class="icon-arrow-left" style="float: left;"></span>
+        <div class="c">
+               {{ article.prev_article_in_category.title }}
+        </div>
+        </a>
+    {% endif %}
+    {% if article.next_article %}
+        <a href="{{ SITEURL }}/{{ article.next_article_in_category.url}}">
+        <span class="icon-arrow-right" style="float: right;"></span>
+        <div class="c">
+            {{ article.next_article_in_category.title }}
+        </div>
+        </a>
+    {% endif %}
+</div>
+{# 
+/******************************************
+  NEXT ARTICLE NAVIGATION
+*****/ #}
+
+
+
+{# 
+/******************************************
+  STORE ITEM LAYOUT
+*****/ #}
+{% if article.category == 'gullah-store' %}
+<div class="clearfix">
+{% include 'breadcrumbs.html' %}
+<div class="onerow">
+<div class="article-product-image col col5">
+        {% if article.featuredimage %}
+        <img src="{{article.featuredimage}}" alt="{{SITENAME}}">
+        {% else %}
+        <img src="{{SITEURL}}/assets/img/thumb.png" alt="{{SITENAME}}">
+        {% endif %}
+</div>
+<div class="article-product-body col col6">
+        <h3>{{article.title}}</h3>
+<h5>{% if article.product_price %}
+  <span class="price">{{article.product_price|babelmoney}}</span>
+  {% else %}
+  {% set prices = article.price_variations.split(',') %}
+  <span class="price">starting at:{{prices[0].split(':')[1]|babelmoney}}</span>
+  {% endif %}</h5>
+        {{article.content}}
+
+        {% if PAYPALCART %}
+        {% include 'modules/paypalform.html' %}
+        {% endif %}  
+
+
+</div>
+</div>
+</div>
+{# 
+/******************************************
+  PRODUCT LAYOUT
+*****/ #}
+
+
+
+
+
+
+
+{# 
+/******************************************
+  EVENT LAYOUT
+*****/ #}
+{% elif article.category == 'gullah-events' %}
+    
+<div class="onerow event-article-head">
+<div class="col col4 event-article-image">
+    {% if article.featuredimage %}
+    <img src="{{article.featuredimage}}" alt="{{SITENAME}}">
+        {% else %}
+    <img src="{{SITEURL}}/assets/img/thumb.png" alt="{{SITENAME}}">
+    {% endif %} 
+</div>
+<div class="col col7 event-article-content">
+    <h2>{{article.title}}</h2>
+    {{article.content}}
+</div>
+</div>
+<div class="onerow event-meta">
+    <div class="onerow event-article-body roundcorners">
+        
+        <div class="event-details">
+<h3>Event Details</h3>
+<div class="clearfix col">
+        <div class="col col4"><strong><span class="icon-alarm"></span>Time:</strong></div>
+<div class="col col9">{{ article.date.strftime('%A,%B %d, %Y')}}</div>
+        <div class="col col9">
+        {{article.event_starttime}}
+        {% if article.event_endtime == '' %}
+        - {{article.event_endtime}}
+        {% endif %}
+        </div>
+</div>
+<div class="clearfix col">
+        <div class="col col4">
+        <strong><span class="icon-location"></span>Venue:</strong></div>
+        <div class="col col9">
+        <p>{{article.venue_name}}<br/>
+        {{article.venue_address}}</p></div>
+</div>
+        </div>
+
+        <div class="event-product"> 
+       {% if article.product_price == '0' %} 
+       <span class="product-price row">Free Will</span><br>
+        <div class="button">Free Will Offering</div>
+        {% else %}
+        {% if article.product_price %}
+        <span class="product-price">{{article.product_price|babelmoney}}</span>
+        {% endif %}
+        {% include 'modules/paypalform.html' %}
+        {% endif %} 
+        </div>
+    </div>
+</div>    
+
+{# 
+/******************************************
+  EVENT LAYOUT
+*****/ #}
+
+
+
+
+
+
+{# 
+/******************************************
+  GENERAL ARTICLE LAYOUT
+*****/ #}
+{% else %}
+
+
+<div class="article-head">
+
+
+    <h2>{{article.title}}</h2>
+    {% set subcategory = SITEURL +'/'+ article.subcategories[0]|replace(' ','-')|lower %}
+    {# <div class="leadin">{{article.summary}}</div>comment #}
+    <p><i class="icon-bookmark"></i><span class="meta"><a href="{{subcategory}}/">{{article.subcategories[0]}}</a></span><br/>{{ article.date.strftime('%B %d, %Y') }}</p>
+    {# 
+    <ul class="tags">
+    {% for tag in article.tags %}
+    <li><a class="roundcorners" href="{{SITEURL}}/{{tag.url}}">{{tag}}</a></li>   
+    {% endfor %}
+    </ul>comment #}
+
+
+    {% if EDIT_THIS %}
+    {{ macros.edit(article.id)}}  
+    {% endif %} 
+{# {% include 'modules/likebutton.html' %}comment #}
+</div>
+
+<div class="article-body">
+    {% if article.featuredimage %}
+    {% set slug = article.title|lower|replace(' ','-') %}
+    <img style="width: 100%;" src="{{article.featuredimage|replace('auto-draft',slug)}}" alt="{{SITENAME}}">
+        {% else %}
+    <img src="{{SITEURL}}/assets/img/thumb.png" alt="{{SITENAME}}">
+    {% endif %} 
+    {% if article.video %}
+<div class="video">
+        <video controls width="600" height="200" autoplay="autoplay" loop="false" preload="auto">
+          <source src="{{article.video}}" type="video/mp4" >     
+        </video> 
+</div>
+{% endif %}
+    {{article.content}}
+{% if article.gallery %}
+<h4>Gallery</h4>
+    <ul class="gallery onerow">
+    {% for image in article.galleryimages %}
+    <li>
+    <a class="{{ article.album }} cboxElement" href="{{ SITEURL }}/assets/gallery/{{ article.album }}/{{ image }}" >
+    <img src="{{ SITEURL }}/assets/gallery/{{ article.album }}/thumbnail/{{ image }}" alt="gallery image">
+    </a>
+    </li>
+    {% else %}
+    <li class="alert">something is missing HERE ???</li>
+    {% endfor %}
+    </ul>
+{% endif %} 
+</div>
+
+
+        
+{% endif %}
+<div class="onerow article-footer">
+   {# {% include 'modules/disqus.html' %}comment #} 
+{# 
+/******************************************
+  GENERAL ARTICLE LAYOUT
+*****/ #}
+
+<div class="center">{% include 'modules/sharelinks.html' %}</div>
+
+
+{# 
+/******************************************
+  RELATED ARTICLE HEADERS
+*****/ #}
+
+<div class="related-articles clearfix">
+
+{% if article.related_posts %}
+{% if article.category == 'gullah-store' %}
+<h4 class="center">Related Products</h4>
+<hr>
+{% else %}
+<h3 class="center">Read More Gullah Magazine Feature Stories</h3>
+<hr>
+{% endif %}
+{# 
+/******************************************
+  RELATED ARTICLE HEADERS
+*****/ #}
+    <ul class="related-posts">
+    {% for related_post in article.related_posts %}
+    <a href="{{ SITEURL }}/{{ related_post.url }}"><li class="roundcorners shadow"><h4>{{ related_post.title }}</h4> <span>{{related_post.date.strftime('%b %d, %Y')}}</span></li></a>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+</div>
+{# 
+/******************************************
+  RELATED ARTICLE HEADERS
+*****/ #}
+</div>
+
+
+
+</div>
+
+<aside class="col col3">
+{% include 'modules/sidebar.html' %}
+</aside>
+</div>
+{% endblock %}

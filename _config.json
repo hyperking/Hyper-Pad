@@ -1,0 +1,21 @@
+{
+    "author": "Derry LevinSki",
+    "sitename": "Hyper Testing",
+    "description": "Digitaly Design & Illustration Company based in Charleston SC",
+    "keywords": "web design, web developer, illustrations, graphic designer,game developer ",
+    "theme": "Basic",
+    "siteurl": "hyper.dev",
+    "cloudurl": "cloud.hyperdev",
+    "clientID": "AR4T8RBZ5GATY4KOl4RV-4npHXw075GsYfEayFajqoqx5A_bNX7kCoNCpKNW",
+    "secretID": "ENfJYhBa0KY3K1qY7LpIOkRP0g5Hq4JPND-vgBEz79zjWJNOHoLHL-rWqstj",
+    "paypal_account": "nibcaa@aol.com",
+    "paypal_currency": "USD",
+    "social": {
+        "facebook": "http://facebook.com/hyperkingmedia",
+        "twitter": "http://twitter.com/derryspann"
+    },
+    "credits":{
+        "email":"studio@hyperkingmedia.com",
+        "address":"the imagination"
+    },"default_page_count":5
+}

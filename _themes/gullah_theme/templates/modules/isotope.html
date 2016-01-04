@@ -1,0 +1,32 @@
+
+<style>
+    #grid .mix{
+    display: none;
+}
+</style>
+{% if category == 'gullah-store' %}
+
+
+{% if ISOFILTER %}
+<ul class="onerow center filterbuttons pagination roundcorners">
+  <li class="col3"><a href="#all" class="filter roundcorner" data-filter=".all">All Products</a></li>
+{% for name in ISOFILTER.shop %}
+  <li class="col3"><a href="#{{name|lower}}" class="filter roundcorner all {{name|lower}}" data-filter=".{{name|lower}}">{{name}}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% else %}
+
+
+{% if ISOFILTER %}
+<ul class="onerow center filterbuttons pagination roundcorners">
+  <li class="col3"><a href="#all" class="filter roundcorner" data-filter=".all">All Events</a></li>
+{% for name in ISOFILTER.events %}
+  <li class="col3"><a href="#{{name}}" class="filter roundcorner all {{name}}" data-filter=".{{name|lower}}">{{name}}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+
+{% endif %}

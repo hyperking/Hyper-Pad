@@ -1,0 +1,54 @@
+  <script>
+    // You can also use "$(window).load(function() {"
+    $(window).load(function() {
+
+      // Slideshow 4
+      $("#slider4").responsiveSlides({
+        auto: true,
+        "pager": false,           // Boolean: Show pager, true or false
+        {% if category != 'gullah-events' %}nav: true,
+        {% else %}
+        nav: false,
+        {% endif %}       
+        speed: 500,
+        timeout: 2000,
+        pause: true,
+        // maxwidth: 300,
+        namespace: "callbacks",
+        before: function () {
+
+        },
+        after: function () {
+
+        }
+      });
+      // $('ul.callbacks_tabs').appendTo('.sliderlinks')
+    });
+  </script>
+
+
+    <!-- Slideshow  -->
+<div class="slidewrapper">
+{% if category == 'gullah-events' %}
+<div class="topbanner"></div>
+<div class="slider-emblem"></div>
+{% endif %}
+
+<ul class="rslides" id="slider4">
+{% for article in articles if article.featuredimage %}
+{% if loop.index0 < 3 %}
+    <li>
+      {% if article.featuredimage %}
+        <img style="height:400px;" src="{{article.featuredimage}}" alt="{{article.title|truncate(15)}}">
+        {% else %}
+        <img style="height:400px;" src="{{SITEURL}}/assets/img/jpeg-1.jpg" alt="{{article.title|truncate(45)}}">
+        {% endif %}
+        {% if not category == 'gullah-events' %}
+          <div class="caption animated"><a href="{{SITEURL}}/{{article.url}}">{{article.title|truncate(45)}}</a></div> 
+          {% endif %}
+        </li>
+{% endif %}
+{% endfor %}
+      </ul>
+
+</div>

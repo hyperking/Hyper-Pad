@@ -1,0 +1,15 @@
+{
+    "username": "derry",
+    "password": "$2y$08$3aXW.4ScPYXy72wgNW5Xs.NrfHaja3ZjlKb851UdPiJeDZgKELWqm",
+    "firstname": "Derry",
+    "lastname": "Spann",
+    "useremail": "",
+    "bio": "derry's bio area is here for you to read. \n\nI will be making further enhancements to this app soon\n\n<b>cheers!<\/b>",
+    "created_on": "2015-03-26 06:37:23pm",
+    "last_updated": "2015-03-26 06:38:42pm",
+    "role": {
+        "admin": 0,
+        "author": 0,
+        "member": 1
+    }
+}

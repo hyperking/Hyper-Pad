@@ -1,0 +1,14 @@
+html.ie7 .main-nav li a span{display:none;}
+html.ie7 nav.main-nav li a{height: auto;}
+html.ie7 nav.main-nav small{top:0;}
+
+html.ie7 ul li{ display: inline;}
+html.ie7 ul.eventlist li{ float:left; display: inline;}
+html.ie7 a.button, input.button {
+    background: #37ADB2;
+    border: 1px solid #2A8387;
+}
+html.ie7 .credits{width:100%;overflow: hidden;}
+html.ie7 a:focus, a, a > * {color:#479cae; cursor:pointer;}
+html.ie7 section.orange {background-color:transparent;}
+html.ie7 body.welcome section.orange {background-color:#fff;}

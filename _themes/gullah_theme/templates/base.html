@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+<!-- web optimized favicons -->
+<link rel="apple-touch-icon" sizes="57x57" href="{{ASSETSURL}}/img/favicons/apple-touch-icon-57x57.png" />
+<link rel="icon" type="image/png" href="{{ASSETSURL}}/img/favicons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="{{ASSETSURL}}/img/favicons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="{{ASSETSURL}}/img/favicons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="{{ASSETSURL}}/img/favicons/favicon-160x160.png" sizes="160x160" />
+<meta name="msapplication-TileColor" content="#00aba9" />
+<meta name="msapplication-TileImage" content="{{ASSETSURL}}/img/favicons/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="{{ASSETSURL}}/img/favicons/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="{{ASSETSURL}}/img/favicons/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="{{ASSETSURL}}/img/favicons/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="{{ASSETSURL}}/img/favicons/mstile-310x310.png" />
+    {% block head %}
+    <!-- Meta -->
+<meta charset="utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="robots" content="ALL"/>
+<!-- Use the .htaccess and remove these lines to avoid edge case issues. More info: h5bp.com/i/378 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="google-site-verification" content="{{ GOOGLESITEVERIFY }}" />
+<!-- Seo Optimization -->
+<link rel="canonical" href="{% block seolink %}{% endblock %}" />
+<meta property="og:locale" content="en_US"/>
+<meta property="og:title" content="{% block seotitle %}{% endblock %}"/>
+<meta property="og:description" content="{% block ogdescription %}{% endblock %}"/>
+<meta property="og:url" content="{% block seourl %}{% endblock %}"/>
+<meta property="og:site_name" content="{{SITENAME}}"/>
+<meta property="og:image" content="{% block ogimage %}{% endblock %}"/>
+<!-- Our site title and description -->
+<title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+<meta name="author" content="{% block meta_author %}{{ AUTHOR }}{% endblock %}" />
+<meta name="description" content="{% block meta_description %}{% endblock %}" />
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
+<!-- Mobile viewport optimized: h5bp.com/viewport 
+<meta name="viewport" content="width=device-width" />-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<link rel="canonical" href="{{SITEURL}}" />
+
+    <!-- Shims: IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!--[if lte IE]>
+      <link rel="stylesheet" type="text/css" href="{{SITEURL}}/assets/css/ie8-and-down.css" />
+    <![endif]-->
+
+    {% assets filters="cssmin", output="css/gullahstyle.min.css", "css/base.css", "css/theme.css","css/animate.css","css/responsiveslides.css","css/font.css","css/media.css" %}
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
+    {% endassets %}
+    <link href="//ads.gullahcelebration.com/css/ubm.css?ver=2.60" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="//ads.gullahcelebration.com/js/ubm-jsonp.js?ver=2.60"></script>
+
+    {% endblock %}
+</head>
+
+
+
+{% import 'modules/macros.html' as macros %}
+{% block bodyclass %}
+<body class="pushmenu">
+{% endblock %}
+<div id="polytexture"></div>
+
+<div id="header" class="clearfix">
+<button id="showLeftPush" class="togglebutton roundcorners icon-air">
+      <span>Menu</span>
+</button>
+<a class="header-logo" href="{{SITEURL}}">
+  <img src="{{SITEURL}}/assets/img/gullah-logo.png" alt="gullah celebration logo">
+</a>
+<div class="header-title">
+  {% block pagetitle %}
+  {% endblock %}  
+</div>
+<button id="showRightPush" class="togglebutton roundcorners icon-cart"></button> 
+<div id="header-options">
+  {# <ul class="header-buttons">
+  {% for name, link in SITE_DOWNLOADS %}
+    <li><a href="{{link}}" class="roundcorners"><i class="icon-downloads"></i>{{name}}</a></li>
+    {% endfor %} 
+    </ul>comment #}
+  <div class="social-header">
+  <span class="">Find Us On</span>
+  <ul>
+  {% for name, link in SOCIAL %}
+    <li class="{{name}}"><a href="{{link}}"><span class="icon-{{name}}"></span></a></li>
+    {% endfor %}
+    </ul>
+  </div> 
+  <div id="weather"></div> 
+</div>
+
+</div>
+
+
+<div id="menu" class="side-nav">
+    {% include 'modules/pushmenu.html'%}
+</div>
+{% block gullahphrase %}
+
+{% endblock %}
+ {% block content %}{% endblock %}
+
+<section class="mobile-menu">
+  <img src="{{SITEURL}}/assets/img/gullah-logo.png" alt="gullah celebration logo">
+
+<ul>
+    {% for name in MENU %}  
+    <li title="{{name}}" class="{{name|lower|replace(' ','-')}} 
+    ">
+    <a href="{{SITEURL}}/{{name|lower|replace(' ','-')}}/">
+    <span class="menu-name">{{name|
+    replace('Our','')|
+    replace('Gullah','')|
+    replace('Gallery','Media')}}</span>
+    <span class="menu-icon icon-{{name|lower|replace(' ','-')}}"></span>
+    </a>
+    </li>
+    {% endfor %}
+</ul>
+</section>
+{% if page %}
+{% if page.title == 'Welcome' %}
+<section id="diamond" class="onerow">
+  <div class="diamond-wrapper">
+  {% for name1,name2, link in CALL_TO_ACTION %}
+  <a {% if loop.last %}class="last"{% endif %} href="{{link}}"><div class="diamond">
+    <div class="diamond-text">
+    <h4>{{name1}}</h4>
+    <h3>{{name2}}</h3>
+    </div>
+    </div>
+  </a>    
+  {% endfor %}
+  </div>
+</section>
+<section class="sponsors">
+  <a href="{{SITEURL}}/our-sponsors"><h3>Thanks To Our 2015 Sponsors</h3></a>
+  <ul>
+  {% for name,link,image in SPONSORS %}
+    <li class=""><a href="{{link}}"><img {% if loop.last %}style="height: 145px;"{%endif%}src="{{image}}" alt="{{name}}"></a></li>
+  {% endfor %}
+  </ul>
+</section> 
+{% else %}
+{% include 'footer.html' %}
+{% endif %}
+{% else %}
+{% include 'footer.html' %}
+{% endif %}
+
+
+
+
+
+
+<div class="push-left footer-credits onerow">
+        <ul class="bullets">
+            {% for key, value, link in SITE_CREDITS %}
+            {% if link == '' %}
+        <li>{{key}} {{value}}</li>        
+            {% else %}
+        <li><a href="{{link}}">{{key}} {{value}}</a></li>
+            {% endif %}
+            {% endfor %}   
+        </ul>
+
+</div>
+<div class="side-nav-right">
+  <div id="shopping-cart"></div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+ {% assets filters="jsmin", output="js/packed.js",  
+ "js/slider/responsiveslides.min.js",
+ "js/app.js",
+ "js/scripts.js" %} 
+<script src="{{ SITEURL }}/{{ ASSET_URL }}"></script>
+{% endassets %}
+
+
+<script>
+$(document).ready(function() {
+
+var todaysdate = new Date().toJSON('yyyy-MM-dd').split('T')[0];
+var currpage = location.pathname.replace(/^\/|\/$/g, "");
+var siteurl = location.protocol +'//'+ location.host + location.pathname
+
+$('.side-nav a').filter(function(){
+  return this.getAttribute('href') === siteurl;
+}).parent().addClass('active');
+
+
+$('li').each(function (idx, el) {
+    newdate = $(el).data('datedata');
+    pagemenu = $(el)
+    p = $(el).attr('class')
+    if (newdate == todaysdate) {
+        $(this).append('<span> Todays Event</span>').addClass('todaysevent');
+    } else if (newdate < todaysdate) {
+        $(this).addClass('closedevent');
+    }
+
+});
+
+
+$('#grid').mixItUp();
+
+{% if PAYPALCART == True  %}
+  {% if page and page.slug == 'gullah-store-cancel'%}
+  paypal.minicart.reset();
+  {% else %}
+  paypal.minicart.render();
+  {% endif %}
+  $("#PPMiniCart").appendTo("#shopping-cart");
+{% endif %}
+
+
+/******************************************
+ WEATHER MODULE 
+*****/
+$.simpleWeather({
+    location: 'Hilton Head, SC',
+    // zipcode: '29925',
+    woeid: '',
+    unit: 'f',
+    success: function(weather) {
+      html = '<div class="weather">'+weather.city+', '+weather.region;
+      html += '<div class="weather-today-forecast"><h2><i class="icon-'+weather.currently+'"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h2></div>';
+      html += '<span class="currently">'+weather.currently+'</span>';
+      $("#weather").html(html);
+    },
+    error: function(error) {
+      $("#weather").html('<p>'+error+'</p>');
+    }
+    
+});
+}); //end doc function -->
+</script>
+
+{% include 'modules/analytics.html' %}
+
+
+<!--
+
+MADE WITH LOVE BY..
+   __                          
+   / /_  __  ______  ___  _____ 
+  / __ \/ / / / __ \/ _ \/ ___/ 
+ / / / / /_/ / /_/ /  __/ /     
+/_/ /_/\__, / .___/\___/_/      
+    __/____/_/                  
+   / /__(_)___  ____ _          
+  / //_/ / __ \/ __ `/          
+ / ,< / / / / / /_/ /           
+/_/|_/_/_/ /_/\__, /   ___      
+   ____ ___  ///__/___/ (_)___ _
+  / __ `__ \/ _ \/ __  / / __ `/
+ / / / / / /  __/ /_/ / / /_/ / 
+/_/ /_/ /_/\___/\__,_/_/\__,_/  
+                                
+
+HYPERKINGMEDIA.COM
+
+
+
+-->
+</body>
+</html>

@@ -1,0 +1,182 @@
+@font-face {
+  font-family: 'alx';
+  src:url('../fonts/alx/alexandriaflf-webfont.eot');
+  src:url('../fonts/alx/alexandriaflf-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/alx/alexandriaflf-webfont.woff') format('woff'),
+    url('../fonts/alx/alexandriaflf-webfont.ttf') format('truetype'),
+    url('../fonts/alx/alexandriaflf-webfont.svg#alx') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'axbold';
+  src:url('../fonts/axbold/alexandriaflf-bold-webfont.eot');
+  src:url('../fonts/axbold/alexandriaflf-bold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/axbold/alexandriaflf-bold-webfont.woff') format('woff'),
+    url('../fonts/axbold/alexandriaflf-bold-webfont.ttf') format('truetype'),
+    url('../fonts/axbold/alexandriaflf-bold-webfont.svg#axbold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'icomoon';
+  src:url('../fonts/icons/gullahcon.eot?-qy18bx');
+  src:url('../fonts/icons/gullahcon.eot?#iefix-qy18bx') format('embedded-opentype'),
+    url('../fonts/icons/gullahcon.woff?-qy18bx') format('woff'),
+    url('../fonts/icons/gullahcon.ttf?-qy18bx') format('truetype'),
+    url('../fonts/icons/gullahcon.svg?-qy18bx#gullahcon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.inset-text {
+    text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.25);
+}
+.icon-art:before,.icon-gallery:before{
+  content: "\e630";
+}
+.icon-close:before, .minicart-showing .icon-list:before,.side-nav-open .icon-air:before{
+  content: "\e62f";
+}
+.icon-gullah_bird:before,.icon-contact-us:before {
+  content: "\e61b";
+}
+.icon-gullah_boat:before,.icon-about-us:before{
+  content: "\e61c";
+}
+.icon-gullah_cow:before,.icon-travel-info:before {
+  content: "\e61d";
+}
+.icon-gullah_sun:before,.icon-welcome:before  {
+  content: "\e61e";
+}
+.icon-camera:before {
+  content: "\e600";
+}
+.icon-music:before {
+  content: "\e601";
+}
+.icon-play:before {
+  content: "\e602";
+}
+.icon-ticket:before,.icon-gullah-events:before {
+  content: "\e603";
+}
+.icon-cart:before,.icon-gullah-store:before {
+  content: "\e604";
+}
+.icon-phone:before {
+  content: "\e605";
+}
+.icon-location:before {
+  content: "\e606";
+}
+.icon-map:before {
+  content: "\e607";
+}
+.icon-map-line:before {
+  content: "\e608";
+}
+.icon-alarm:before {
+  content: "\e609";
+}
+.icon-calendar:before {
+  content: "\e60a";
+}
+.icon-food:before {
+  content: "\e60b";
+}
+.icon-airplane:before {
+  content: "\e60c";
+}
+.icon-flag:before {
+  content: "\e60d";
+}
+.icon-download:before {
+  content: "\e623";
+}
+.icon-upload:before {
+  content: "\e624";
+}
+.icon-bookmark:before,.icon-subscribe:before {
+  content: "\e60e";
+}
+.icon-heart:before,.icon-our-sponsors:before {
+  content: "\e60f";
+}
+.icon-heart2:before {
+  content: "\e610";
+}
+.icon-thumbs-up:before {
+  content: "\e611";
+}
+.icon-thumbs-down:before {
+  content: "\e612";
+}
+.icon-googleplus:before {
+  content: "\e613";
+}
+.icon-facebook:before {
+  content: "\e614";
+}
+.icon-instagram:before {
+  content: "\e615";
+}
+.icon-twitter:before {
+  content: "\e616";
+}
+.icon-pinterest:before {
+  content: "\e617";
+}
+.icon-paypal:before {
+  content: "\e618";
+}
+.icon-envelope:before {
+  content: "\e619";
+}
+.icon-book:before, .icon-blog:before, .icon-gullah-magazine:before {
+  content: "\e61a";
+}
+.icon-book:before {
+  content: "\e61a";
+}
+.icon-arrow-left:before {
+  content: "\e626";
+}
+.icon-arrow-right:before {
+  content: "\e627";
+}
+.icon-air:before {
+  content: "\e62d";
+}
+.icon-list:before {
+  content: "\e62e";
+}
+.icon-Sunny:before {
+  content: "\e628";
+}
+.icon-Partly:before,.icon-Cloudy:before {
+  content: "\e629";
+}
+.icon-thunderstorms:before,.icon-severe:before {
+  content: "\e62a";
+}
+.icon-windy:before {
+  content: "\e62b";
+}
+.icon-weather:before {
+  content: "\e62c";
+}

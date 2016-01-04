@@ -1,0 +1,20 @@
+{% assets filters="cssmin", output="css/style.min.css", "css/main.css", "css/theme.css","css/animate.css" %}
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
+{% endassets %}
+
+
+{% block pagehead %}
+<style>body{background:transparent;}</style>
+    <div class="modal">
+    <h1>{{page.title}}</h1>
+    <hr>
+    <h6>
+    <p>{{page.subtitle}}</p>
+    </h6>
+    {{page.content}}
+    </div>
+
+{% endblock %}
+
+
+

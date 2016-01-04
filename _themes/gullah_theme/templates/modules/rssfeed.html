@@ -1,0 +1,29 @@
+<html>
+<body>
+    <?php
+    $rss = new DOMDocument();
+    $rss->load('{{RSS_FEED_FROM_BLOG}}');
+/*     $rss->load('http://news.google.com/news?ned=us&topic=h&output=rss'); */
+    $feed = array();
+    foreach ($rss->getElementsByTagName('item') as $node) {
+        $item = array (
+        'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
+        'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
+        'date' => $node->getElementsByTagName('pubDate')->item(0)->nodeValue,
+        'image' => $node->getElementsByTagName('img')->item(0)->nodeValue,
+        );
+        array_push($feed, $item);
+    }
+    $limit = 6;
+    for($x=0;$x<$limit;$x++) {
+    $title = str_replace(' & ', ' &amp; ', $feed[$x]['title']);
+    $link = $feed[$x]['link'];
+    $desc = $feed[$x]['desc'];$desc = substr($desc, 0, 125);
+    $date = date('l F d, Y', strtotime($feed[$x]['date']));
+    echo '<li><a href="'.$link.'" title="'.$title.'">'.$title.'';
+    echo '<small><em style="float: right;">posted on '.$date.'</em></small></a><br /></li>';
+    }
+    ?>
+ 
+</body>
+</html>

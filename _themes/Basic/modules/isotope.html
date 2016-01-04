@@ -1,0 +1,12 @@
+<style>
+#grid .mix{
+    display: none;
+}
+</style>
+
+  <li class=""><a href="#all" class="filter roundcorner" data-filter=".all">All</a></li>
+{% for tag, articles in tags %}
+  <li><a class="filter roundcorner all {{tag|replace(' ','-')}}" data-filter=".{{tag|replace(' ','-')}}" href="#{{ tag|replace(' ','-') }}">{{ tag }}</a></li>
+{% endfor %}
+
+

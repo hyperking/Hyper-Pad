@@ -1,0 +1,112 @@
+ 
+
+{# 
+{% if page %} 
+
+
+<div class="onerow banners">
+    <div class="wrapper-1000">
+  <ul class="featureditems">
+
+  {% for article in articles|reverse %}
+    {% if article.featuredpost %}
+      <li class="col3">
+      <div class="featuredimage"><img src="{{CLOUDURL}}/images/{{article.featuredimage}}" alt=""></div>
+      <h3>{{article.title}}</h3>
+      <a class="button" href="{{SITEURL}}/{{article.url}}">purchase ticket now!</a>
+      </li>
+    
+    {% endif %}
+    {% endfor %}
+  </ul>
+    </div>
+</div>
+
+
+
+{% else %}
+
+{% if article.featuredpost %}
+<div class="onerow banners">
+    <div class="wrapper-1000">
+    <div class="col4">
+ <h1 class="border-top">Popular Events</h1>   
+</div>  
+  <ul class="col8 featureditems">
+
+  {% for article in articles|reverse %}
+    {% if article.externalimage %}
+      <li class="col4">
+      <div class="eventimage"><img src="{{CLOUDURL}}/images/{{article.featuredimage}}" alt=""></div>
+      <h2>{{article.title}}</h2>
+      <a class="button" href="{{SITEURL}}/{{article.url}}">purchase ticket now!</a>
+      </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+    </div>
+</div>
+
+{% endif %}
+
+{% endif %}
+#}
+
+<div class="onerow widget">
+<div class="wrapper-1000"> 
+<div class="col4">
+{% if page %}
+{% if page.slug == 'welcome' %}
+ <h1 class="border-top">From the Blog</h1>   
+{% else %}
+ <h1 class="border-top">Popular Events</h1>   
+{% endif %}
+{% elif article and NEXT_ARTICLE %}
+<h1 class="border-top">Next Event</h1>
+{% endif %}
+</div>  
+        <div class="col8">
+            {% if page %}
+            <ul class="list-all-articles">
+            {% if page.slug == 'welcome' %}
+            {% include '_modules/rssfeed.html' %}
+            {% else %}
+                {% for article in articles|reverse %}
+                {% if loop.index0 < 6 %}
+                
+                    <li>
+                    <a href="{{ SITEURL }}">{{ article.title }} {%if article.subtitle %} <small> {{ article.subtitle }} </small> {% endif %} <time pubdate="pubdate" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time> </a> 
+                    </li>
+                
+                {% endif %}
+                {% endfor %}
+            </ul>            
+            {% endif %}
+
+            {% elif article %}
+
+
+        {% if NEXT_ARTICLE %}
+            {% if article.next_article %}
+                <li>
+                <div class="eventimage"><img src="{{CLOUDURL}}/images/{{article.next_article.featuredimage}}" alt=""></div>
+                    <a href="{{ SITEURL }}/{{ article.next_article.url}}">
+                        {{ article.next_article.title }}
+                    </a>
+                </li></ul>
+            {% endif %}
+        {% endif %}
+            {% endif %}<!-- end article condition -->
+
+            
+        </div>
+</div>
+<section class="orange {% if page %}{% if page.slug == 'welcome' %}ss-style-zigzag{% endif %}{%endif%}">
+<ul class="octo">
+{% for name, link in QUICKBUTTONS %}
+<a href="{{link}}"><li>{{name}}</li></a>
+{% endfor %}
+</ul>  
+</section> 
+
+</div>

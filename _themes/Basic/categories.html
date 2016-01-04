@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}{{categories.name}}{% endblock %} 
+{% block content %}
+<h1>{{categories.name}} Category</h1> 
+{% if categories.name == 'gallery' %}
+Welcome to my gallery 
+{% endif %}
+
+<h3>Sub Categories listed below</h3>
+<ul>
+{% set count = 1 %}
+{% for cat in categories.list %}
+{% set url = cat.url %}
+{% set collection = hyperQuery(url, 3) %}
+
+	<li><a href="{{cat.url}}"><h4>{{cat.name}}</h4></a>
+		<ul>
+		{% for articles in collection %}
+		   <li><a href="{{articles.url}}">{{count + loop.index0}}. {{articles.title}}
+		   </a></li>
+		{% endfor %}
+		</ul>
+	</li>
+
+{% endfor %}
+
+</ul>
+
+{% endblock %}

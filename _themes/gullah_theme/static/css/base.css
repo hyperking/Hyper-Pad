@@ -1,0 +1,590 @@
+/* ================   RESET HTML   ==================================*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video { border: 0; font-size: 100%; font: inherit; vertical-align: baseline; margin: 0; padding: 0; }
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display: block; }
+/* ===================================================================     
+						BASE ELEMENTS
+/* =================================================================== */
+
+body {
+  font-family: 'open-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.4;
+  text-decoration: none;
+
+}
+.content img,.footer img {
+  border: 0;
+  height: auto;
+  width: 100%
+}
+a {
+  border: none;
+  text-decoration: none;
+-webkit-transition: all 0.3s ease;
+-moz-transition: all 0.3s ease;
+transition: all 0.3s ease;
+}
+a:focus {
+  outline: none;
+}
+img, video {
+max-width: 100%;
+height: auto;
+}
+/* ===================== LISTS ================================= */
+ul, ol{
+padding:0;
+list-style-type:none;
+}
+
+li{margin:0; }
+ul.list-unstyled{padding:0; margin:0 0 20px 0; }
+ul.list-unstyled li{padding:5px 0; margin:0; list-style-type:none; }
+ul.alt{padding:0; margin:0 0 20px 0; }
+ul.alt li{
+list-style-type:none;
+border-top:1px dotted #ccc;
+border-bottom:1px dotted #ccc;
+margin:0 0 -1px 0;
+background:url(img/icon-arrow-right.png) no-repeat 5px 0.7em;
+padding-left:20px;
+}
+hr {
+margin: 20px 234px;
+border-style: dashed;
+border-width: 1px;
+border-color: rgb(79, 143, 151);
+}
+/* ===================== COLUMN GRID ================================= */
+/*.col1 img, .col2 img, .col3 img, .col4 img, .col5 img, .col6 img, .col7 img, .col8 img, .col9 img, .col10 img, .col11 img, .col12 img {
+    width: 100%;
+    height: auto;
+    display: block;
+}*/
+.onerow {
+clear: both;
+overflow: hidden;
+margin: 20px 0px;
+}
+.section {
+  position: relative;
+}
+.clearfix {
+display: block;
+}
+.clearfix:after,.onerow:after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+}
+/* Fluid Grid */
+.col {
+  float: left;
+  /*padding-right: 10px;*/
+}
+
+.no-gutter {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.col1 {
+  width: 8.33333%;
+}
+.col2 {
+  width: 16.66667%;
+}
+.col3 {
+  width: 25%;
+}
+.col4 {
+  width: 33.33333%;
+}
+.col5 {
+  width: 41.66665%;
+}
+.col6 {
+  width: 50%;
+}
+.col7 {
+  width: 58.33333%;
+}
+.col8 {
+  width: 66.66666%;
+}
+.col9 {
+  width: 75%;
+}
+.col10 {
+  width: 83.33333%;
+}
+.col11 {
+  width: 91.66666%;
+}
+.col12 {
+  width: 100%;
+}
+
+/* ===================== TYPOGRAPHY ================================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+hr {
+  position: relative;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0 0 10px 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'axbold';
+  text-transform: uppercase;
+  font-weight: 500;
+}
+h1 span,
+h2 span,
+h3 span,
+h4 span,
+h5 span {
+  display: block;
+}
+h1,
+h2 {
+  font-size: 60px;
+  line-height: 1em;
+  margin-bottom: 20px;
+
+  -webkit-font-feature-settings: "kern", "liga", "case";
+  /* No variation */
+  -moz-font-feature-settings: "kern=1", "liga=1", "case=1";
+  /* Firefox 4.0 to 14.0 */
+  -moz-font-feature-settings: "kern", "liga", "case";
+  /* Firefox 15.0 onwards */
+  font-feature-settings: "kern", "liga", "case";
+  /* No variation */
+}
+h1,
+h2,
+h6 {
+  font-weight: 300;
+}
+h2 {
+  font-size: 40px;
+}
+h3,
+h4 {
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 300;
+}
+h4 {
+  font-size: 16px;
+  font-weight: 300;
+}
+h5,
+h6 {
+  font-weight: 400;
+  font-size: 14px;
+}
+.center{
+  text-align: center;
+  margin:0 auto;
+}
+.lead-in {
+font-weight: 300;
+font-size: 22px;
+line-height: 1.5;
+}
+
+
+/* FORMS */
+.message, [role~="alert"], [role~="status"] {
+    background: none repeat scroll 0 0 #D3D3D3;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    color: #5A5A5A;
+    font-weight: 700;
+    padding: 0.25em 1em 0.25em 2em;
+    text-decoration: none;
+    word-wrap: break-word;
+}
+.form-control {
+display: block;
+width: 100%;
+height: 34px;
+padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857143;
+color: #555;
+background-color: #fff;
+background-image: none;
+border: 1px solid #ccc;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+form {
+  margin: 0 0 20px;
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 21px;
+  line-height: 40px;
+  color: #333333;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+legend small {
+  font-size: 15px;
+  color: #999999;
+}
+
+label,
+input,
+button,
+select,
+textarea {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  display: inline-block;
+  height: 20px;
+  padding: 4px 6px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #555555;
+  vertical-align: middle;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+input,
+textarea,
+.uneditable-input {
+  width: 206px;
+}
+
+textarea {
+  height: auto;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  background-color: #e9e9e9;
+  border: none;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 4px 0 0;
+  margin-top: 1px \9;
+  *margin-top: 0;
+  line-height: normal;
+}
+
+input[type="file"],
+input[type="image"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+}
+
+select,
+input[type="file"] {
+  height: 30px;
+  /* In IE7, the height of the select element cannot be changed by height, only font-size */
+
+  *margin-top: 4px;
+  /* For IE7, add top margin to align select with labels */
+
+  line-height: 30px;
+}
+
+select {
+  width: 220px;
+  background-color: #e9e9e9;
+  border: none;
+}
+
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+select:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.uneditable-input,
+.uneditable-textarea {
+  color: #999999;
+  cursor: not-allowed;
+  background-color: #fcfcfc;
+  border-color: #cccccc;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+}
+
+.uneditable-input {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.uneditable-textarea {
+  width: auto;
+  height: auto;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #999999;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #999999;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.radio,
+.checkbox {
+  min-height: 20px;
+  padding-left: 20px;
+}
+
+.radio input[type="radio"],
+.checkbox input[type="checkbox"] {
+  float: left;
+  margin-left: -20px;
+}
+
+input[class*="span"],
+select[class*="span"],
+textarea[class*="span"],
+.uneditable-input[class*="span"],
+.row-fluid input[class*="span"],
+.row-fluid select[class*="span"],
+.row-fluid textarea[class*="span"],
+.row-fluid .uneditable-input[class*="span"] {
+  float: none;
+  margin-left: 0;
+}
+
+.input-append input[class*="span"],
+.input-append .uneditable-input[class*="span"],
+.input-prepend input[class*="span"],
+.input-prepend .uneditable-input[class*="span"],
+.row-fluid input[class*="span"],
+.row-fluid select[class*="span"],
+.row-fluid textarea[class*="span"],
+.row-fluid .uneditable-input[class*="span"],
+.row-fluid .input-prepend [class*="span"],
+.row-fluid .input-append [class*="span"] {
+  display: inline-block;
+}
+
+input,
+textarea,
+.uneditable-input {
+  margin-left: 0;
+}
+
+.controls-row [class*="span"] + [class*="span"] {
+  margin-left: 20px;
+}
+
+input.col12,
+textarea.col12,
+.uneditable-input.col12 {
+  width: 926px;
+}
+
+input.col11,
+textarea.col11,
+.uneditable-input.col11 {
+  width: 846px;
+}
+
+input.col10,
+textarea.col10,
+.uneditable-input.col10 {
+  width: 766px;
+}
+
+input.col9,
+textarea.col9,
+.uneditable-input.col9 {
+  width: 686px;
+}
+
+input.col8,
+textarea.col8,
+.uneditable-input.col8 {
+  width: 606px;
+}
+
+input.col7,
+textarea.col7,
+.uneditable-input.col7 {
+  width: 526px;
+}
+
+input.col6,
+textarea.col6,
+.uneditable-input.col6 {
+  width: 446px;
+}
+
+input.col5,
+textarea.col5,
+.uneditable-input.col5 {
+  width: 366px;
+}
+
+input.col4,
+textarea.col4,
+.uneditable-input.col4 {
+  width: 286px;
+}
+
+input.col3,
+textarea.col3,
+.uneditable-input.col3 {
+  width: 206px;
+}
+
+input.col2,
+textarea.col2,
+.uneditable-input.col2 {
+  width: 126px;
+}
+
+input.col1,
+textarea.col1,
+.uneditable-input.col1 {
+  width: 46px;
+}
+

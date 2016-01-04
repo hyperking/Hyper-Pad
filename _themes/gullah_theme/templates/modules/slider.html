@@ -1,0 +1,61 @@
+  <script>
+    // You can also use "$(window).load(function() {"
+    $(window).load(function() {
+      // Slideshow 4
+      $("#slider4").responsiveSlides({
+        auto: false,
+{% if category %}
+      "pager": true,           // Boolean: Show pager, true or false
+{% elif page and page.slug == 'welcome' %}
+      "pager": false,           // Boolean: Show pager, true or false
+{% endif %}
+        nav: true,
+        speed: 300,
+        timeout: 2000, 
+        // maxwidth: 300,
+        namespace: "callbacks",
+        before: function () {
+
+        },
+        after: function () {
+
+        }
+      });
+      $('ul.callbacks_tabs').appendTo('.sliderlinks')
+    });
+  </script>
+
+
+    <!-- Slideshow  -->
+<div class="slidewrapper">
+<div class="slider-emblem"></div>
+      <ul class="rslides" id="slider4">
+<li><img src="{{SITEURL}}/assets/img/gullahimage.jpg" alt="Gullah Celebration">
+{# <div class="caption"><h3>Image Title 1</h3><p>image caption</p></div>comment #}
+</li>
+{#{% if page %}        {% for pair in page.featuredimages.split(',') %}
+          {% set pairlist = loop.cycle(pair.split(':')) %}
+                  <li>
+                      <img src="{{ASSETSURL}}/media/products/{{pairlist[0]}}" alt="{{page.title}}">
+                      <p class="caption animated fadeInDown">{{pairlist[1]}}</p>  
+                  </li>
+
+
+          {% endfor %}
+{% elif articles %}
+
+          {% for pair in article.featuredimages.split(',') %}
+          {% set pairlist = loop.cycle(pair.split(':')) %}
+                  <li>
+                      <img src="{{ASSETSURL}}/media/products/{{pairlist[0]}}" alt="{{article.title}}">
+                      <p class="caption">{{pairlist[1]}}</p>  
+                  </li>
+
+
+          {% endfor %}
+
+{% endif %}comment #}  
+
+      </ul>
+
+</div>

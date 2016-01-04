@@ -1,0 +1,29 @@
+<section class="sponsors">
+  <a href="{{SITEURL}}/our-sponsors"><h3>Thanks To Our 2015 Sponsors</h3></a>
+  <ul>
+  {% for name,link,image in SPONSORS %}
+    <li class=""><a href="{{link}}"><img {% if loop.last %}style="height: 145px;"{%endif%}src="{{image}}" alt="{{name}}"></a></li>
+  {% endfor %}
+  </ul>
+</section> 
+
+<section class="onerow downloads">
+  <div class="wrapper push-left col10">
+  <div class="col section-label">
+    <h4>Gullah Celebration</h4>
+    <h2>Downloads</h2>
+  </div>
+    <ul class="col section-content">
+    {% for name, link in SITE_DOWNLOADS %}
+    <li><a href="{{link}}" class="roundcorners"><i class="icon-download"></i>{{name}}</a></li>
+    {% endfor %} 
+    </ul>
+  </div>
+</section>
+<div class="footer horizontal-zigzag clearfix">
+<div class="wrapper clearfix push-left col9">
+  <div class="advertisement onerow">
+    {{macros.sidebar_ads('1')}}
+  </div>
+</div>
+</div>

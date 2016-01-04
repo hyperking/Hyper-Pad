@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}{{page.title}} {% endblock %} 
+
+{% block content %}
+<div class="row">
+
+<h1>{{page.title}}</h1>
+<p>{{page.content|raw}}</p>
+{% if URL == '/login' %}
+    
+    {% if in_session == 'no' %}
+
+            <h1>{{page.title}}</h1> 
+            {{page.content|raw}}
+            {% include 'modules/loginpanel.html' %}
+
+    {% else %}
+
+            {{ redirectTo('/profile') }}
+
+    {% endif %}
+
+
+{% elseif URL == '/register' %}
+
+            {% include 'modules/register.html' %}
+            
+{% elseif URL == '/logout' %}
+
+            {{ destroySession() }}
+            {{ redirectTo('/login') }}
+
+
+{% elseif URL == '/updateprofile' %}
+            {% include 'modules/updateprofile.html' %}
+{% elseif URL == '/profile' %}
+
+            {% if in_session == 'yes' %}
+                {% include 'modules/profile.html' %}
+                {% else %}
+                {{redirectTo('/login')}}
+            {% endif %}
+
+    {% else %}
+
+    {{page.content|raw}}
+    {% endif %} 
+
+</div>
+
+
+{% endblock %}

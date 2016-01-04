@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+{% block bodyclass %}
+<body class="pushmenu category {{category|lower|replace(' ','-')}}">
+{% endblock %}
+{# {% block gullahphrase %}
+ <div class="onerow gullah-phrase">
+  <div class="push-left center">
+    <h3>
+    {% for name, data in PAGE_META.items() if name == category %}
+      {{data['phrase']}}
+    {% endfor %}
+  {% if category not in PAGE_META %}
+    EBENIN’ EB’RY-BODY! TAH GULLAH SHEL-UH'-BAY'SHUN
+  {% endif %}
+    </h3>
+  </div>  
+  </div> 
+{% endblock %}#}
+{% block pagetitle %}
+{{ macros.pptitle( category|replace('Gallery','Media Gallery')|replace('Gullah Magazine','The Gullah Magazine') ) }}
+{% endblock %}
+{% block content %}
+{# <div class="content-emblem col3">
+  <div class="advertisement-square">
+    {{macros.sidebar_ads('2')}}
+  </div>
+</div>comment #}
+<div id="content" class="push-left">
+
+
+<div class="">
+<div class="content-head">
+<h1 class="page-title center">
+{% if category == 'Gullah Magazine' %}<span>The</span>{% endif %}
+{{category|replace('Gallery','Media Gallery')}}</h1>
+
+<hr>
+</div>
+
+
+
+{# 
+/******************************************
+ EVENTS LAYOUT 
+*****/
+#}
+{% if category == 'gullah-events' %}
+{# #}
+<div class="onerow tabslider">
+  {% include 'modules/categoryslider.html' %}  
+</div>
+<hr> 
+<h3 class="title center">Gullah Celebration 2015 Calendar of Events</h3>
+  <h4 class="title center">Filter Events by:</h4>
+{% include 'modules/isotope.html' %}
+
+<ul id="grid" class="articlelist onerow">  
+{% for category in articles|groupby('category') %}
+{% if category.grouper in ('gullah-events',) %}
+{% for article in category.list|reverse %}
+    <li class="col4 {{ article.event_type|lower|replace('/',' ') }} all roundcorners mix" data-datedata="{{ article.date.strftime('%Y-%m-%d')}}">
+    {% if CURRDATE < ENDDATE %}
+    <a class="roundcorners" href="{{SITEURL}}/{{article.url}}">
+    {% else %}
+    <a class="roundcorners" href="{{SITEURL}}/">
+    {% endif %}
+    <div class="onerow list-head">
+      <div class="eventdate col">
+      <span class="dayofweek">{{ article.date.strftime('%A')}}</span>
+      <span class="month">{{ article.date.strftime('%b')}}</span>
+      <span class="date">{{ article.date.strftime('%d')}}</span>
+      <span class="year">{{ article.date.strftime('%Y')}}</span>
+      </div>
+      <h3>{{article.title}}</h3>
+    </div>
+    <div class="onerow list-content">
+      <span><strong>Venue:</strong><br> {{article.venue_name}}</span><br>
+      <span><strong>Address:</strong> <br>{{article.venue_address}}</span><br>
+      <div class="button">Learn More</div>
+    </div> 
+    </a>
+    </li>
+{% endfor %}
+{% endif %} 
+{% endfor %}
+</ul> 
+{# 
+/******************************************
+ EVENTS LAYOUT 
+*****/
+#}
+
+
+
+{# 
+/******************************************
+ MAGAZINE LAYOUT 
+*****/
+#}
+{% elif category == 'gullah-magazine' %}
+  <div class="col col12">
+  {% include 'modules/categoryslider.html' %}  
+  </div>
+<ul class="{{category|lower|replace(' ','-')}}">
+
+{# comment #}
+{% for subcats in ('food','art','education','music','culture','lifestyle') %}
+{%set subcategories = subcats %}
+    <li class="mag-cat col col4">
+{% for article in articles|groupby('subcategories') if article.grouper[0].shortname in subcategories %}
+{% if loop.index0 < 1 %}
+<a style="background: url('{{article.list[0].featuredthumb}}') no-repeat #2d2037;     background-size: cover; "
+class="roundcorners" href="{{SITEURL}}/{{category.slug}}/{{subcategories}}">
+      <div class="subcat-body">
+      {{subcategories|capitalize}}
+      <span>Top Story:</span>
+  
+  <h4>{{article.list[0].title|truncate(40,True)}}</h4>
+ 
+
+      <div class="learnmore">Browse Stories</div>
+      </div> 
+</a>
+{% endif %}{% endfor %}
+    </li>
+{% endfor %}
+
+
+
+{# 
+{% for subcats in articles|groupby('subcategories') %}
+ {%set subcategory = subcats.grouper[0].shortname %}
+    <li class="mag-cat col col4">
+{% if loop.index0 < 6 %}
+{% for art in subcats.list|sort(attribute='subcategories') %}
+  {% if loop.index0 < 1 %}
+    <a style="
+    background: url('{% if art.featuredthumb %}{{art.featuredthumb}}{%else%}{{SITETHUMB}}{%endif%}') no-repeat #2d2037;
+    background-size: cover;"
+    class="roundcorners" href="{{SITEURL}}/{{category.slug}}/{{subcategory}}">
+      <div class="subcat-body">
+      {{subcategory|capitalize}}
+      <span>Top Story:</span>
+      <h4>{{art.title}}</h4>
+      <div class="learnmore">Browse Stories</div>
+      </div> 
+    </a>
+  {% endif %}
+{% endfor %}
+{% endif %}
+    </li>
+{% endfor %}
+comment #}
+
+
+</ul>
+{# 
+/******************************************
+ MAGAZINE LAYOUT 
+*****/
+#}
+
+
+
+{# 
+/******************************************
+ STORE LAYOUT 
+/******************************************
+#}
+{% elif category == 'gullah-store' %}
+<h3 class="center title">Filter {{category}} by:</h3>
+  {% include 'modules/isotope.html' %}
+
+{% for category in articles|groupby('category') %}
+{% if category.grouper in ('gullah-store',) %}
+<ul id="grid" class="eventlist">  
+{% for article in category.list|reverse %}  
+<li class="store-item all {{article.product_type|lower|replace('/',' ')}} roundcorners mix">
+  <div class="store-item-image {{article.product_type}}">
+  <img src="{{article.featuredthumb}}" alt="{{article.title}}">
+  </div>
+  <div class="store-item-desc">
+  <a href="{{SITEURL}}/{{article.url}}"><h4 class="eventname">{{article.title}}</h4></a>
+  {% if article.product_price %}
+  <span class="price">{{article.product_price|babelmoney}}</span>
+  {% else %}
+  {% set prices = article.price_variations.split(',') %}
+  <span class="price">starting at:{{prices[0].split(':')[1]|babelmoney}}</span>
+  {% endif %} 
+  <a class="button" href="{{SITEURL}}/{{article.url}}">View Product</a>
+  </div>
+</li>
+{% endfor %}
+</ul>     
+{% endif %} 
+{% endfor %}
+{# Pagination for store page disabled due to low post count. Activate when post count has over 39 items
+to increase page speed
+{% include "pagination.html" %}
+ #}
+
+
+
+
+{# 
+/******************************************
+ GALLERY LAYOUT 
+/******************************************
+#}
+{% elif category == 'gallery' %}
+
+<ul class="{{category|lower|replace(' ','-')}}">
+{% for subcats in articles|groupby('subcategories') %}
+ {%set subcategory = subcats.grouper[0].shortname %}
+    <li class="mag-cat col col4">
+    <a class="roundcorners" href="{{SITEURL}}/{{category.slug}}/{{subcategory|lower}}/">
+      <div class="subcat-body">
+      <h2>{{subcategory|capitalize}}</h2>
+      {% for article, art in subcats.list|groupby('subcategories') %}
+      <span>Browse this Gallery:</span>
+      <h4>{{art[0].title}}</h4>
+      {% endfor %}</div> 
+    </a>
+    </li>
+{% endfor %}
+</ul>
+{% endif %}
+
+
+  <div class="onerow center">{% include 'modules/sharelinks.html' %}</div>
+</div>
+</div>
+{% endblock %}

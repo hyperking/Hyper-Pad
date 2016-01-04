@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}{{subcategories.name}}{% endblock %} 
+{% block content %}
+
+<h3>Entries for {{categories.name}} category is listed below</h3>
+
+<ol>
+{% for articles in categories.entries %}
+   <li><a href="{{articles.url}}">
+   {{articles.title}} <strong>{{articles.date|date("D F jS Y")}}</strong>
+   </a></li>
+{% endfor %}
+</ol>
+{{pagenav.total_pages}}
+{% for pagenum in pagination %}
+    {{pagenum}}
+{% endfor %}
+{% endblock %}

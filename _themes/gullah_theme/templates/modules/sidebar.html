@@ -1,0 +1,48 @@
+{% import 'modules/macros.html' as macros %}
+{# OUTPUT ALL CATEGORES WITH NESTED SUBCATEGORIES. MUST HAVE SUBCATEGORY PLUGIN ENABLED 
+{% for category, articles in categories %}
+                <h4>
+                <a href="{{SITEURL}}/{{category.url}}"> Browse {{ category }}</a> 
+                </h4>
+
+                    <ul>
+                        {% for article in articles|groupby('subcategories') %} 
+                        {% set nums = articles|count %}
+                        <li class="{{ loop.cycle('odd','even') }}">
+                        <a href="{{ SITEURL }}/{{ article.grouper[0].fullurl }}">{{ article.grouper[0].shortname }} - {{nums}}</a>
+                        
+                        </li>
+                        
+                        {% endfor %}
+                    </ul>
+{% endfor %}#}
+{% if page %}
+<img class="center" src="{{SITEURL}}/assets/img/gullah-seal.png" alt="">
+<ul class="page-widget">
+{% for p in pages if p.childof == 'about-us' %}
+    <li class="{% if p == page %}active{% endif %}"><a href="{{SITEURL}}/{{p.url}}" class="roundcorners"><i class="icon-downloads"></i>{{p.title}}</a></li>
+    {% endfor %} 
+</ul>
+<div class="block center">
+<h3>Want to Become a Sponsor?</h3>
+{# <a class="btn teal" href="http://gullah.hyperkingmedia.com/advertise-with-us/">
+Get Started! Click Here</a>comment #}
+<strong>Send Us a Message</strong>
+<a class="button" href="mailto:info@gullahcelebration.com?Subject=I want to become a Sponsor" target="_top">
+Send Email</a>
+{# <ul>
+    <li>Post Office Box 23452</li>
+    <li>Hilton Head Island, SC 29925</li>
+    <li>(843)-255-7304</li>
+</ul>comment #}
+</div> 
+
+{% elif article %}
+
+    {{ macros.sidebar_ads('2')}}
+    {{ macros.sidebar_ads('2')}}
+    {{ macros.sidebar_ads('4')}}
+    {{ macros.sidebar_ads('4')}}
+
+{%endif%}
+
