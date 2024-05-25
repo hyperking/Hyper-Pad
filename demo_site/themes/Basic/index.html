@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="color-scheme" content="light dark" /> -->
+    <meta name="robots" content="ALL"/>
+    <meta name="author" content="{% block meta_author %}{{ SITEAUTHOR }}{% endblock %}" />
+    <meta name="description" content="{% block meta_description %}{{SITEDESCRIPTION}}{% endblock %}" />
+    <meta name="keywords" content="{% block meta_keywords %}{{SITEKEYWORDS}}{% endblock %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="css/pico.min.css">
+    <title>Hello world!</title>
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <link rel="canonical" href="{{SITEURL}}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+  </head>
+  <body>
+    <main class="container">
+    {% block content %}
+        {{page.content|raw}}
+    {% endblock %}
+    </main>
+    <aside class="side-nav-right">
+        {% include 'modules/menu.html' %}
+    </aside>
+  </body>
+</html>

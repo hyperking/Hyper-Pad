@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="color-scheme" content="light dark" /> -->
+    <meta name="robots" content="ALL"/>
+    <meta name="author" content="{% block meta_author %}{{ SITEAUTHOR }}{% endblock %}" />
+    <meta name="description" content="{% block meta_description %}{{SITEDESCRIPTION}}{% endblock %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>{{page.title}}</title>
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <link rel="canonical" href="{{SITEURL}}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+  </head>
+  <body>
+    <header class="container">
+        <nav>
+            <ul>
+              <li><strong>{{configs.sitename}}</strong></li>
+            </ul>
+            <ul>
+              <li>
+                <details class="dropdown">
+                  <summary>Navigation</summary>
+                  <ul dir="rtl">
+                    {% for p in navigation %}
+                        <li title="{{p.title}}" class="{{p.url}} {% if url == p.url %}active{% endif %}">
+                            <a href="{{p.url}}"><span class="menu-name">{{p.title}}</span></a>
+                        </li>
+                    {% endfor %}
+                  </ul>
+                </details>
+              </li>
+            </ul>
+          </nav>
+    </header>
+    <main class="container-fluid">
+    {% block content %}
+        {{page.content|raw}}
+    {% endblock %}
+    </main>
+  </body>
+</html>
