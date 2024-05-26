@@ -51,8 +51,40 @@ class HyperSite
     {
         return $this->configs['theme'];
     }
-
     public function saveToFS($payload){
+        list($schema, $jsondata) = $payload; 
+        $response = [
+            'cmd' => 0, // special attribute to notify reciever to execute a service
+            'status' => true,
+        ];
+
+        $useSchema =  $schema ?: []; // process arrays into separate files
+        $uid = $_GET['id'] ?: uniqid();
+        $entry_dir = $this->dbpath.'/'.$uid;
+        $schema_file = $entry_dir.'/'.'schema.json';
+        if(!file_exists($entry_dir)) mkdir($entry_dir,0777,true);
+        if($useSchema){
+            foreach ($useSchema as $key){
+                $isFK = str_ends_with($key, "[]");
+                $key = str_replace("[]","", $key);// clean up key
+                $data = $jsondata[$key] ?? null;
+                $file = $entry_dir.'/'.$key.'.json';
+                $response[$key] = file_exists($file); // may notify caller on existing state
+                if(!$data) continue;
+                if($isFK && array_is_list($data)){
+                    update($file, $data); continue; // updates list in contents
+                }
+                save($file, $data); // updates file contents
+            }
+            save($schema_file, $schema);
+            return $response;
+        }
+        
+        save($entry_dir.'/'.uniqid().'.json', $jsondata);
+        return $response;
+
+    }
+    public function xsaveToFS($payload){
         list($schema, $jsondata) = $payload; 
         $response = [
             'cmd' => 0, // special attribute to notify reciever to execute a service

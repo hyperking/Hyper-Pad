@@ -1,0 +1,9 @@
+FROM php:8-fpm
+RUN apt-get update
+RUN pecl install -o -f xdebug
+RUN docker-php-ext-enable xdebug
+RUN apt-get install -y git
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer global require laravel/installer
+
+WORKDIR /apps
